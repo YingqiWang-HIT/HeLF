@@ -1,6 +1,5 @@
 # HeLF
 
-**Heterogeneous latent fusion of physical mechanisms and data features for transonic airfoil flow reconstruction across multiple conditions**
 
 [![Python](https://img.shields.io/badge/Python-3.9%2B-blue)](https://www.python.org/)
 [![PyTorch](https://img.shields.io/badge/PyTorch-2.0%2B-ee4c2c)](https://pytorch.org/)
