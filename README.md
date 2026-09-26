@@ -6,8 +6,6 @@
 [![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 [![Status](https://img.shields.io/badge/status-under%20review-orange)](docs/RELEASE_STATUS.md)
 
-> [!NOTE]
-> HeLF was previously released under the names **SaFiD** and **APM-Diff**. The computations are unchanged; the package, classes, and documentation were renamed to match the revised manuscript. See [CHANGELOG.md](CHANGELOG.md) for the name mapping.
 
 > [!IMPORTANT]
 > **Review-stage release.** The associated manuscript is currently under peer review. This repository provides the complete public software structure, model interfaces, three-stage training pipeline, inference pipeline, latent fusion implementation, synthetic smoke-test data generator, tests, and documentation. A limited set of critical experimental details has intentionally been replaced by clearly marked public defaults. The exact values, dataset split identifiers, preprocessing statistics, selected fusion timesteps, full CFD/LES generation settings, official checkpoints, and complete benchmark metadata will be disclosed after peer review.
