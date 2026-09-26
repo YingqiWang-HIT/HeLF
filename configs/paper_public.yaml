@@ -1,0 +1,86 @@
+project:
+  name: helf
+  run_name: paper_public
+  seed: 42
+  output_dir: checkpoints/paper_public
+
+data:
+  root: data/official
+  image_size: [256, 256]
+  flow_channels: 4
+  condition_mean: [1.0, 7.5]       # REVIEW_DEFAULT, final statistics pending
+  condition_std: [0.1414, 5.5902]  # REVIEW_DEFAULT
+  flow_mean: [1.0, 0.8, 0.0, 1.0] # REVIEW_DEFAULT
+  flow_std: [0.2, 0.4, 0.2, 0.3]  # REVIEW_DEFAULT
+  num_workers: 8
+  pin_memory: true
+model:
+  vae:
+    in_channels: 4
+    channels: [64, 128, 256]
+    latent_channels: 4
+  geometry:
+    patch_scales: [4, 8, 16]
+    hidden_dim: 256
+    condition_dim: 512
+    layers: 6
+    heads: 8
+    max_token_grid: 16
+    dropout: 0.0
+  denoiser:
+    channels: [128, 256, 384, 512]
+    time_dim: 256
+    groups: 8
+    attention_heads: 8
+    deformable_kernel: 3
+    salient_fraction: 0.05
+    dropout: 0.0
+  diffusion:
+    train_steps: 1000
+    sample_steps: 50
+    schedule: cosine
+    eta: 0.0
+  physics:
+    gamma: 1.4
+    lambda_cons: 1.0       # REVIEW_DEFAULT
+    lambda_bc: 1.0         # REVIEW_DEFAULT
+    lambda_rh: 1.0         # REVIEW_DEFAULT
+    omega_max: 0.10            # maximum fusion weight omega_max
+    correction_count: 8        # number of fusion steps |T_p|
+    correction_steps: auto     # fusion-step set T_p; exact set withheld during peer review
+    energy_ref: 1.0            # E_ref in the correction need n_t; REVIEW_DEFAULT
+    # Saliency gate: Omega_s = dilation_r(top (1 - shock_quantile) of the saliency map).
+    shock_partition: saliency  # saliency | gradient | none (partition ablation)
+    shock_quantile: 0.95
+    shock_dilation: 0          # radius r; 0 keeps the review-stage behavior
+training:
+  stage_a:
+    epochs: 200
+    batch_size: 16
+    learning_rate: 1.0e-4
+  stage_b:
+    epochs: 400
+    batch_size: 8
+    learning_rate: 5.0e-5
+  stage_c:
+    epochs: 300
+    batch_size: 8
+    learning_rate: 1.0e-5
+  optimizer:
+    betas: [0.9, 0.999]
+    weight_decay: 1.0e-4
+  ema_decay: 0.9999
+  grad_clip: 1.0
+  amp: true
+  save_every: 10
+  loss:
+    beta_max: 1.0e-4       # REVIEW_DEFAULT
+    kl_warmup_epochs: 50   # REVIEW_DEFAULT
+    lambda_sal: 0.5        # REVIEW_DEFAULT
+    lambda_cont: 0.1       # REVIEW_DEFAULT
+    lambda_phy: 0.01       # REVIEW_DEFAULT
+    lambda_rec: 1.0        # REVIEW_DEFAULT
+    saliency_pos_weight: 4.0 # REVIEW_DEFAULT
+sampling:
+  use_ema: true
+  save_intermediates: false

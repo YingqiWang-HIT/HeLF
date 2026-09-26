@@ -1,0 +1,10 @@
+# Partition ablation (b): Gradient partition.
+# The shock region is the top (1 - shock_quantile) fraction of the gradient
+# indicator G of the decoded field instead of the learned saliency map.
+# Use as an override with a trained checkpoint; only sampling needs to be rerun:
+#   python scripts/evaluate.py --config configs/paper_public.yaml \
+#     --override configs/ablations/partition_gradient.yaml \
+#     --checkpoint <stage_c_best.pt> --split test
+model:
+  physics:
+    shock_partition: gradient

@@ -1,0 +1,36 @@
+cff-version: 1.2.0
+message: "Please cite this review-stage software release and the final paper when available."
+title: "HeLF: Heterogeneous latent fusion of physical mechanisms and data features for transonic airfoil flow reconstruction across multiple conditions"
+type: software
+version: "0.3.0-review"
+date-released: 2026-09-26
+license: MIT
+authors:
+  - family-names: Wang
+    given-names: Yingqi
+  - family-names: Liu
+    given-names: Datong
+  - family-names: Liu
+    given-names: Lei
+  - family-names: Zhang
+    given-names: Yusu
+  - family-names: Jia
+    given-names: Shiyan
+  - family-names: Xiao
+    given-names: Qianxi
+  - family-names: Song
+    given-names: Yuchen
+abstract: >-
+  Review-stage PyTorch implementation of HeLF (formerly SaFiD and APM-Diff). The associated manuscript is
+  under peer review. Selected critical experimental parameters, official data
+  splits, solver settings, and checkpoints will be disclosed after review.
+repository-code: "https://github.com/YingqiWang-HIT/HeLF"
+keywords:
+  - latent diffusion
+  - transonic airfoil
+  - flow reconstruction
+  - latent space fusion
+  - heterogeneous feature fusion
+  - physical mechanisms
+  - saliency gating
+  - information fusion

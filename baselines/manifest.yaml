@@ -1,0 +1,112 @@
+# Provenance record for every compared method.
+# Fill every TO_FILL entry before reporting results. Do not copy numbers between
+# methods; parameter counts, NFE, and timings must be measured for each method.
+
+protocol:
+  split: geometry-disjoint, identical for all methods
+  normalization: training split only
+  evaluation: scripts/evaluate_predictions.py --shock-region reference
+  timing: TO_FILL  # warm-up runs, timed runs, synchronization, hardware
+
+baselines:
+  - name: ARASF
+    category: deterministic
+    reference: "Liu et al., Nat. Mach. Intell. 7 (2025) 1129-1140"
+    source: TO_FILL
+    commit: TO_FILL
+    license: TO_FILL
+    adaptation: TO_FILL
+    params_m: TO_FILL
+    nfe: 1
+
+  - name: GrFormer
+    category: deterministic
+    replaces: TransCFD
+    reference: "Kang et al., Inf. Fusion 125 (2026) 103402"
+    source: https://github.com/Shaoyun2023/GrFormer
+    commit: TO_FILL
+    license: TO_FILL
+    adaptation: TO_FILL  # input channels, output head, loss (see baselines/README.md)
+    params_m: TO_FILL
+    nfe: 1
+
+  - name: Flow3DNet
+    category: deterministic
+    reference: "Zuo et al., Aerosp. Sci. Technol. 159 (2025) 109991"
+    source: TO_FILL
+    commit: TO_FILL
+    license: TO_FILL
+    adaptation: TO_FILL
+    params_m: TO_FILL
+    nfe: 1
+
+  - name: Hines-GNN
+    category: graph
+    reference: "Hines and Bekemeyer, Aerosp. Sci. Technol. 137 (2023) 108268"
+    source: TO_FILL
+    commit: TO_FILL
+    license: TO_FILL
+    adaptation: TO_FILL
+    params_m: TO_FILL
+    nfe: 1
+
+  - name: PIDANO
+    category: TO_FILL  # match the category used in the final manuscript
+    replaces: FMIGNN
+    reference: "Inf. Fusion 136 (2026) 104553"
+    source: TO_FILL  # official code not located; state if reimplemented
+    commit: TO_FILL
+    license: TO_FILL
+    adaptation: TO_FILL  # supervised loss + physics loss, conditioning (see README)
+    params_m: TO_FILL
+    nfe: 1
+
+  - name: FlowViT-Diff
+    category: diffusion
+    reference: "Lou et al., Chin. J. Aeronaut. 38 (2025) 103624"
+    source: TO_FILL
+    commit: TO_FILL
+    license: TO_FILL
+    adaptation: TO_FILL
+    params_m: TO_FILL
+    nfe: TO_FILL
+
+  - name: FluidGS
+    category: gaussian
+    reference: "Xie et al., ACM MM 2025, pp. 8438-8447"
+    source: TO_FILL
+    commit: TO_FILL
+    license: TO_FILL
+    adaptation: TO_FILL
+    params_m: TO_FILL
+    nfe: TO_FILL
+
+  - name: Diff-IF
+    category: fusion
+    reference: "Yi et al., Inf. Fusion 110 (2024) 102450"
+    source: TO_FILL
+    commit: TO_FILL
+    license: TO_FILL
+    adaptation: TO_FILL
+    params_m: TO_FILL
+    nfe: TO_FILL
+
+  - name: LFDT-Fusion
+    category: fusion
+    reference: "Yang et al., Inf. Fusion 113 (2025) 102639"
+    source: TO_FILL
+    commit: TO_FILL
+    license: TO_FILL
+    adaptation: TO_FILL
+    params_m: TO_FILL
+    nfe: TO_FILL
+
+  - name: AtNet
+    category: fusion
+    reference: "Tang et al., Inf. Fusion 120 (2025) 103045"
+    source: TO_FILL
+    commit: TO_FILL
+    license: TO_FILL
+    adaptation: TO_FILL
+    params_m: TO_FILL
+    nfe: TO_FILL

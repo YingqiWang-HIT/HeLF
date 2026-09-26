@@ -1,0 +1,86 @@
+project:
+  name: helf
+  run_name: smoke
+  seed: 7
+  output_dir: checkpoints/smoke
+data:
+  root: data/synthetic
+  image_size: [64, 64]
+  flow_channels: 4
+  condition_mean: [0.95, 7.5]
+  condition_std: [0.15, 5.6]
+  flow_mean: [1.0, 0.8, 0.0, 1.0]
+  flow_std: [0.2, 0.4, 0.2, 0.3]
+  num_workers: 0
+  pin_memory: false
+model:
+  vae:
+    in_channels: 4
+    channels: [16, 32, 64]
+    latent_channels: 4
+  geometry:
+    patch_scales: [4, 8, 16]
+    hidden_dim: 32
+    condition_dim: 64
+    layers: 2
+    heads: 4
+    max_token_grid: 4
+    dropout: 0.0
+  denoiser:
+    channels: [32, 64, 96, 128]
+    time_dim: 64
+    groups: 8
+    attention_heads: 4
+    deformable_kernel: 3
+    salient_fraction: 0.10
+    dropout: 0.0
+  diffusion:
+    train_steps: 50
+    sample_steps: 8
+    schedule: cosine
+    eta: 0.0
+  physics:
+    gamma: 1.4
+    lambda_cons: 0.1
+    lambda_bc: 0.1
+    lambda_rh: 0.1
+    omega_max: 0.05
+    correction_count: 2
+    correction_steps: auto
+    energy_ref: 1.0
+    shock_partition: saliency
+    shock_quantile: 0.90
+    shock_dilation: 0
+training:
+  stage_a:
+    epochs: 1
+    batch_size: 4
+    learning_rate: 1.0e-3
+  stage_b:
+    epochs: 1
+    batch_size: 4
+    learning_rate: 5.0e-4
+  stage_c:
+    epochs: 1
+    batch_size: 2
+    learning_rate: 1.0e-4
+  optimizer:
+    betas: [0.9, 0.999]
+    weight_decay: 1.0e-4
+  ema_decay: 0.99
+  grad_clip: 1.0
+  amp: false
+  save_every: 1
+  max_train_batches: 2
+  max_val_batches: 1
+  loss:
+    beta_max: 1.0e-4
+    kl_warmup_epochs: 1
+    lambda_sal: 0.25
+    lambda_cont: 0.05
+    lambda_phy: 1.0e-4
+    lambda_rec: 0.5
+    saliency_pos_weight: 2.0
+sampling:
+  use_ema: true
+  save_intermediates: false

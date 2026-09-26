@@ -1,0 +1,10 @@
+# Partition ablation (a): Global conservation.
+# The differential conservation residual is applied to the whole domain and the
+# Rankine-Hugoniot term vanishes because the shock region is empty.
+# Use as an override with a trained checkpoint; only sampling needs to be rerun:
+#   python scripts/evaluate.py --config configs/paper_public.yaml \
+#     --override configs/ablations/partition_global_conservation.yaml \
+#     --checkpoint <stage_c_best.pt> --split test
+model:
+  physics:
+    shock_partition: none

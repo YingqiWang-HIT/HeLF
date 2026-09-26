@@ -1,0 +1,17 @@
+name: helf
+channels:
+  - pytorch
+  - nvidia
+  - conda-forge
+dependencies:
+  - python=3.9
+  - pytorch>=2.0
+  - torchvision>=0.15
+  - pytorch-cuda=11.8
+  - numpy>=1.23
+  - pyyaml>=6.0
+  - tqdm>=4.65
+  - pip
+  - pip:
+      - pytest>=7.4
+      - ruff>=0.4

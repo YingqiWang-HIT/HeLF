@@ -1,0 +1,24 @@
+# Copy this file to configs/private_override.yaml for local confidential values.
+# The copied filename is ignored by git.
+
+data:
+  root: /absolute/path/to/restricted/data
+  condition_mean: [REPLACE, REPLACE]
+  condition_std: [REPLACE, REPLACE]
+  flow_mean: [REPLACE, REPLACE, REPLACE, REPLACE]
+  flow_std: [REPLACE, REPLACE, REPLACE, REPLACE]
+
+model:
+  physics:
+    correction_steps: [REPLACE]
+    energy_ref: REPLACE
+
+training:
+  loss:
+    beta_max: REPLACE
+    kl_warmup_epochs: REPLACE
+    lambda_sal: REPLACE
+    lambda_cont: REPLACE
+    lambda_phy: REPLACE
+    lambda_rec: REPLACE
+    saliency_pos_weight: REPLACE
